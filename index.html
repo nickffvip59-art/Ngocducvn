@@ -124,6 +124,27 @@ body { background: linear-gradient(135deg, #74ebd5, #ACB6E5); min-height:100vh; 
         <pre id="spamResult" class="log">Kết quả sẽ hiển thị ở đây...</pre>
     </div>
 
+<!-- SPAM2 -->
+<div class="card">
+    <h3>spam2 lời mời</h3>
+    <input type="text" id="spam2Uid" placeholder="Nhập UID">
+    <input type="text" id="spam2Region" placeholder="Region (mặc định VN)">
+    <button onclick="runSpam2()">Gửi spam2</button>
+    <pre id="spam2Result" class="log">Kết quả sẽ hiển thị ở đây...</pre>
+</div>
+
+<script>
+/* ======= SPAM2 handler ======= */
+const API_SPAM2="https://ff-community-apiemoteessss.onrender.com/inv";
+
+function runSpam2(){ 
+    const uid=document.getElementById("spam2Uid").value.trim();
+    const region=document.getElementById("spam2Region").value.trim()||"VN";
+    if(!uid) return alert("⚠️ Chưa nhập UID");
+    callAPI(`${API_SPAM2}?uid=${encodeURIComponent(uid)}&region=${encodeURIComponent(region)}`, document.getElementById("spam2Result"));
+}
+</script>
+
     <!-- GHOST -->
     <div class="card">
         <h3>ghost bot</h3>
@@ -186,7 +207,7 @@ body { background: linear-gradient(135deg, #74ebd5, #ACB6E5); min-height:100vh; 
                 <option value="909035007">M1887</option>
                 <option value="909051003">M60</option>
                 <option value="909038012">G18</option>
-                <option value="909038010">Thủ sơn</option>
+                <option value="909038010">Thuson</option>
                 <option value="909033001">M4A1</option>
                 <option value="909041005">Groza</option>
                 <option value="909035012">AN94</option>
