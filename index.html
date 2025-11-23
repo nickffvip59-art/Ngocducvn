@@ -6,33 +6,25 @@
 <title>Ghost Bot & Spam - Đức</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-/* ---- Base ---- */
 * { box-sizing: border-box; margin:0; padding:0; font-family: 'Roboto', sans-serif; }
 body { background: linear-gradient(135deg, #74ebd5, #ACB6E5); min-height:100vh; display:flex; justify-content:center; align-items:center; padding:20px; }
-
-/* ---- Logo ---- */
 .logo { font-size:3rem; font-weight:700; background: linear-gradient(270deg,#4CAF50,#45a049,#FFB347,#FF7E5F,#74ebd5,#ACB6E5); -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation: animateGradient 3s linear infinite, glow 2s infinite alternate, floatRotate 5s ease-in-out infinite; margin-bottom:20px; }
 @keyframes animateGradient {0% {background-position:0% 50%;} 50% {background-position:100% 50%;} 100% {background-position:0% 50%;}}
 @keyframes glow {0% {text-shadow:0 0 5px #4CAF50,0 0 10px #45a049,0 0 15px #FFB347;} 50% {text-shadow:0 0 10px #FF7E5F,0 0 15px #74ebd5,0 0 20px #ACB6E5;} 100% {text-shadow:0 0 5px #4CAF50,0 0 10px #45a049,0 0 15px #FFB347;}}
 @keyframes floatRotate {0% {transform:translateY(0px) rotate(0deg);} 25% {transform:translateY(-10px) rotate(5deg);} 50% {transform:translateY(0px) rotate(0deg);} 75% {transform:translateY(10px) rotate(-5deg);} 100% {transform:translateY(0px) rotate(0deg);} }
-
-/* ---- Login box ---- */
 #loginContainer { background: rgba(255,255,255,0.95); padding: 30px 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 380px; width: 100%; text-align: center; transition: all 0.5s ease; }
 #loginContainer input { width:100%; padding:12px; margin-bottom:15px; border-radius:10px; border:1px solid #ccc; font-size:16px; }
 .pw-container { position: relative; margin-bottom:15px; }
 .pw-toggle-btn { position: absolute; right:8px; top:50%; transform: translateY(-50%); padding:6px 10px; border:none; background:#4CAF50; color:#fff; border-radius:6px; cursor:pointer; font-size:0.85rem; }
-#loginContainer button.login-btn { width:100%; padding:12px; border:none; border-radius:10px; background: linear-gradient(90deg,#4CAF50,#45a049); color:white; font-size:16px; cursor:pointer; transition:0.3s; }
-#loginContainer button.login-btn:hover { background:linear-gradient(90deg,#45a049,#3e8e41); }
+#loginContainer button.login-btn, #loginContainer button.key-btn { width:100%; padding:12px; border:none; border-radius:10px; background: linear-gradient(90deg,#4CAF50,#45a049); color:white; font-size:16px; cursor:pointer; transition:0.3s; margin-bottom:10px; }
+#loginContainer button.login-btn:hover, #loginContainer button.key-btn:hover { background:linear-gradient(90deg,#45a049,#3e8e41); }
 .error { color:red; margin-bottom:10px; }
 #loginContainer.success { transform: scale(1.05); opacity:0; }
-
-/* ---- Main container + cards ---- */
 #mainContainer { display:none; width:100%; max-width:760px; margin:0 auto; padding:30px 20px; text-align:center; }
 .admin-badge-container { text-align:center; margin-bottom:20px; }
 .admin-badge { display:inline-block; background: linear-gradient(90deg,#4CAF50,#45a049); color:white; padding:6px 16px; border-radius:20px; font-weight:500; font-size:0.95rem; }
 .crown { margin-right:6px; animation:blink 1s infinite; }
 @keyframes blink {0%,50%,100%{opacity:1;}25%{opacity:0.8;}75%{opacity:0.9;}}
-
 .card { background: linear-gradient(135deg,#e0f7fa,#ffffff); border-radius:15px; padding:22px 18px; margin:18px auto; max-width:520px; box-shadow:0 8px 20px rgba(0,0,0,0.08); transition: transform 0.18s, box-shadow 0.25s; text-align:left; }
 .card:hover { transform:translateY(-6px); box-shadow:0 14px 30px rgba(0,0,0,0.12);}
 .card h3 { margin-bottom:12px; color:#333; font-size:1.15rem; font-weight:600; text-align:left; }
@@ -40,44 +32,12 @@ body { background: linear-gradient(135deg, #74ebd5, #ACB6E5); min-height:100vh; 
 .card button { width:100%; padding:12px; border:none; border-radius:10px; background:linear-gradient(90deg,#4CAF50,#45a049); color:white; cursor:pointer; margin-top:6px; font-weight:600; }
 .card button:hover { background:linear-gradient(90deg,#45a049,#3e8e41); }
 .log { max-height:200px; overflow-y:auto; background:#f4f4f4; padding:12px; border-radius:10px; font-size:14px; white-space:pre-wrap; word-wrap:break-word; margin-top:10px; }
-
-/* ---- Emote select (pink theme + arrow) ---- */
 .select-wrapper { position: relative; width:100%; margin-bottom:6px; }
-.emote-select {
-    width:100%;
-    padding:12px 44px 12px 14px; /* leave space for arrow */
-    border-radius:12px;
-    border:none;
-    font-size:16px;
-    font-weight:600;
-    background: linear-gradient(135deg, #ff66cc, #ff3399);
-    color: white;
-    appearance: none;
-    cursor: pointer;
-    box-shadow: 0 6px 18px rgba(255, 0, 140, .18);
-    transition: transform .22s ease, background .22s ease;
-}
+.emote-select { width:100%; padding:12px 44px 12px 14px; border-radius:12px; border:none; font-size:16px; font-weight:600; background: linear-gradient(135deg, #ff66cc, #ff3399); color: white; appearance: none; cursor: pointer; box-shadow: 0 6px 18px rgba(255, 0, 140, .18); transition: transform .22s ease, background .22s ease; }
 .emote-select:hover { transform: scale(1.02); background: linear-gradient(135deg, #ff3399, #ff1a8c); }
 .emote-select option { color: #000; background: #fff; font-weight:500; }
-
-/* custom arrow */
-.select-wrapper::after {
-    content: "▾";
-    font-size:14px;
-    color: #fff;
-    position: absolute;
-    right:14px;
-    top:50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-}
-
-/* mobile tweaks */
-@media (max-width:600px){
-    #loginContainer, #mainContainer { padding:18px; }
-    .logo { font-size:2.4rem; }
-    .card { padding:18px; }
-}
+.select-wrapper::after { content: "▾"; font-size:14px; color: #fff; position: absolute; right:14px; top:50%; transform: translateY(-50%); pointer-events: none; }
+@media (max-width:600px){ #loginContainer, #mainContainer { padding:18px; } .logo { font-size:2.4rem; } .card { padding:18px; } }
 </style>
 </head>
 <body>
@@ -87,12 +47,12 @@ body { background: linear-gradient(135deg, #74ebd5, #ACB6E5); min-height:100vh; 
     <div class="logo">ngọc đức</div>
     <h2>Đăng nhập Admin</h2>
     <div class="error" id="errorMsg"></div>
-    <input type="text" id="username" placeholder="Tên đăng nhập">
     <div class="pw-container">
         <input type="password" id="password" placeholder="Mật khẩu">
         <button type="button" class="pw-toggle-btn" onclick="togglePassword()">Hiện</button>
     </div>
     <button class="login-btn" onclick="login()">Đăng nhập</button>
+    <button class="key-btn" onclick="window.open('https://link4sub.com/CCV2','_blank')">Lấy Key</button>
 </div>
 
 <!-- MAIN -->
@@ -101,7 +61,6 @@ body { background: linear-gradient(135deg, #74ebd5, #ACB6E5); min-height:100vh; 
         <div class="logo" style="margin-bottom:6px;">ngọc đức</div>
         <h1 style="margin-bottom:8px;">Ghost Bot X Spam</h1>
     </div>
-
     <div class="admin-badge-container" style="text-align:center;">
         <span class="admin-badge"><span class="crown">👑</span> Admin: ngọc đức</span>
     </div>
@@ -124,26 +83,14 @@ body { background: linear-gradient(135deg, #74ebd5, #ACB6E5); min-height:100vh; 
         <pre id="spamResult" class="log">Kết quả sẽ hiển thị ở đây...</pre>
     </div>
 
-<!-- SPAM2 -->
-<div class="card">
-    <h3>spam2 lời mời</h3>
-    <input type="text" id="spam2Uid" placeholder="Nhập UID">
-    <input type="text" id="spam2Region" placeholder="Region (mặc định VN)">
-    <button onclick="runSpam2()">Gửi spam2</button>
-    <pre id="spam2Result" class="log">Kết quả sẽ hiển thị ở đây...</pre>
-</div>
-
-<script>
-/* ======= SPAM2 handler ======= */
-const API_SPAM2="https://ff-community-apiemoteessss.onrender.com/inv";
-
-function runSpam2(){ 
-    const uid=document.getElementById("spam2Uid").value.trim();
-    const region=document.getElementById("spam2Region").value.trim()||"VN";
-    if(!uid) return alert("⚠️ Chưa nhập UID");
-    callAPI(`${API_SPAM2}?uid=${encodeURIComponent(uid)}&region=${encodeURIComponent(region)}`, document.getElementById("spam2Result"));
-}
-</script>
+    <!-- SPAM2 -->
+    <div class="card">
+        <h3>spam2 lời mời</h3>
+        <input type="text" id="spam2Uid" placeholder="Nhập UID">
+        <input type="text" id="spam2Region" placeholder="Region (mặc định VN)">
+        <button onclick="runSpam2()">Gửi spam2</button>
+        <pre id="spam2Result" class="log">Kết quả sẽ hiển thị ở đây...</pre>
+    </div>
 
     <!-- GHOST -->
     <div class="card">
@@ -219,12 +166,9 @@ function runSpam2(){
         <button onclick="runEmote()">Gửi hành động</button>
         <pre id="emoteResult" class="log">Kết quả sẽ hiển thị ở đây...</pre>
     </div>
-
 </div>
 
 <script>
-/* ======= CONFIG (client-side demo) ======= */
-const ADMIN_USER="ngocducvn";
 const ADMIN_PASS="123";
 
 /* ======= UI helpers ======= */
@@ -236,24 +180,24 @@ function togglePassword(){
 }
 
 function login(){
-    const username=document.getElementById("username").value.trim();
     const password=document.getElementById("password").value.trim();
     const errorEl=document.getElementById("errorMsg");
     const loginBox=document.getElementById("loginContainer");
-    if(username===ADMIN_USER && password===ADMIN_PASS){
+    if(password===ADMIN_PASS){
         loginBox.classList.add("success");
         setTimeout(()=>{
             loginBox.style.display="none";
             document.getElementById("mainContainer").style.display="block";
         },400);
     } else{
-        errorEl.textContent="⚠️ Sai tên đăng nhập hoặc mật khẩu!";
+        errorEl.textContent="⚠️ Sai mật khẩu!";
         setTimeout(()=> errorEl.textContent = "", 3000);
     }
 }
 
-/* ======= API endpoints (bạn có thể thay đổi) ======= */
+/* ======= API endpoints ======= */
 const API_INVITE="https://ff-community-apiemoteessss.onrender.com/invite";
+const API_SPAM2="https://ff-community-apiemoteessss.onrender.com/inv";
 const API_5="https://ff-community-apiemoteessss.onrender.com/5";
 const API_6="https://ff-community-apiemoteessss.onrender.com/6";
 const API_GHOST="https://ghost-code-amph.onrender.com/execute_command_all?command=/bngx=";
@@ -268,13 +212,10 @@ async function callAPI(url, resultEl){
     resultEl.textContent = "⏳ Đang xử lý này eiu🥰...";
     try{
         const res = await fetch(url);
-        // try to parse json, if fail show text
         const text = await res.text();
         try {
             const data = JSON.parse(text);
-            // flip message style based on typical status fields (project specific)
             if(data.status && data.status === "success"){
-                // Note: previously code used inverted labels, keep flexible
                 resultEl.textContent = `✅️ lỗi\n${data.message || JSON.stringify(data,null,2)}`;
             } else if(data.status && data.status === "error"){
                 resultEl.textContent = `✅️ thành công\n${data.message || JSON.stringify(data,null,2)}`;
@@ -282,7 +223,6 @@ async function callAPI(url, resultEl){
                 resultEl.textContent = `📄 Kết quả API:\n${JSON.stringify(data,null,2)}`;
             }
         } catch(parseErr){
-            // not json
             resultEl.textContent = `📄 Response:\n${text}`;
         }
     } catch(e){
@@ -296,6 +236,13 @@ function runSpam(){
     const region=document.getElementById("spamRegion").value.trim()||"VN";
     if(!uid) return alert("⚠️ Chưa nhập UID");
     callAPI(`${API_INVITE}?uid=${encodeURIComponent(uid)}&region=${encodeURIComponent(region)}`, document.getElementById("spamResult"));
+}
+
+function runSpam2(){ 
+    const uid=document.getElementById("spam2Uid").value.trim();
+    const region=document.getElementById("spam2Region").value.trim()||"VN";
+    if(!uid) return alert("⚠️ Chưa nhập UID");
+    callAPI(`${API_SPAM2}?uid=${encodeURIComponent(uid)}&region=${encodeURIComponent(region)}`, document.getElementById("spam2Result"));
 }
 
 function runGhost(){
